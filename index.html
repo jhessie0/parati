@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejemplos de Gradientes CSS</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 20px;
+    }
+
+    .gradiente {
+      width: 100%;
+      max-width: 600px;
+      height: 150px;
+      margin: 20px auto;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .linear1 {
+      background: linear-gradient(90deg, rgba(176,174,238,1) 0%, rgba(29,30,31,1));
+    }
+
+    .linear2 {
+      background: linear-gradient(to right, red, brown, orange, yellow, blue, green, violet, pink);
+    }
+
+    .linear3 {
+      background: linear-gradient(to right, red 300px, brown 400px, orange 700px);
+    }
+
+    .radial1 {
+      background: radial-gradient(ellipse, rgba(176,174,238,1) 0%, rgba(29,30,31,1));
+    }
+
+    .radial2 {
+      background: radial-gradient(circle, red, brown, orange, yellow, blue);
+    }
+
+    .radial3 {
+      background: radial-gradient(farthest-side, #ff5733, #ffca3a);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="gradiente linear1">Linear Gradient - 90deg (Morado a Gris)</div>
+  <div class="gradiente linear2">Linear Gradient - Arcoíris Horizontal</div>
+  <div class="gradiente linear3">Linear Gradient - Colores por Píxeles</div>
+  <div class="gradiente radial1">Radial Gradient - Elipse (Morado a Gris)</div>
+  <div class="gradiente radial2">Radial Gradient - Círculo Multicolor</div>
+  <div class="gradiente radial3">Radial Gradient - Farthest Side (Naranja a Amarillo)</div>
+
+</body>
+</html>
