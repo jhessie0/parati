@@ -1,23 +1,11 @@
-<?php
-include 'conexion.php';
-session_start();
-
-// Si ya está logueado como usuario, redirigir a comprar.php
-if (isset($_SESSION['id']) && $_SESSION['tipo'] == 'usuario') {
-    header("Location: comprar.php");
-    exit;
-}
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Inicio - Productos</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
   <style>
-    /* Puedes copiar los mismos estilos que tienes en comprar.php */
     body {
       font-family: 'Roboto', sans-serif;
       background: #f0f8ff;
@@ -46,6 +34,7 @@ if (isset($_SESSION['id']) && $_SESSION['tipo'] == 'usuario') {
       margin-top: 10px;
       color: #0077cc;
       font-weight: bold;
+      text-decoration: none;
     }
   </style>
 </head>
@@ -62,48 +51,49 @@ if (isset($_SESSION['id']) && $_SESSION['tipo'] == 'usuario') {
 
 <div class="container">
   <h2>Bienvenido a Farmacia Virtual</h2>
-  🩺 Encuentra tu medicamento sin salir de casa
-Consulta en segundos qué farmacias tienen lo que necesitas.
-<br>
-📍 Ubica tu medicina, compara y elige la más cercana.
-
-Rápido, fácil y sin vueltas.
-<br>
-💊 Tu salud comienza con una buena búsqueda.
+  🩺 Encuentra tu medicamento sin salir de casa<br />
+  Consulta en segundos qué farmacias tienen lo que necesitas.<br />
+  📍 Ubica tu medicina, compara y elige la más cercana.<br />
+  Rápido, fácil y sin vueltas.<br />
+  💊 Tu salud comienza con una buena búsqueda.<br />
   <p><a href="index1.php" class="login-link">Inicia sesión</a> para poder comprar productos.</p>
 
-  <?php
-  $sql = "SELECT p.*, f.nombre AS farmacia FROM productos p
-          JOIN farmacias f ON p.farmacia_id = f.id
-          WHERE p.stock > 0
-          ORDER BY p.id DESC";
+  <div class="producto">
+    <img src="imagenes/medicina1.jpg" alt="Medicina 1" />
+    <h3>Paracetamol 500mg</h3>
+    <p>Alivio rápido para dolor y fiebre.</p>
+    <strong>$50.00</strong><br />
+    <p>Farmacia: Farmacia Central</p>
+    <p>Stock: 20</p>
+    <a href="index1.php" class="login-link">Inicia sesión para comprar</a>
+  </div>
 
-  $result = $conn->query($sql);
+  <div class="producto">
+    <img src="imagenes/medicina2.jpg" alt="Medicina 2" />
+    <h3>Ibuprofeno 400mg</h3>
+    <p>Medicamento antiinflamatorio y analgésico.</p>
+    <strong>$75.00</strong><br />
+    <p>Farmacia: Farmacia La Salud</p>
+    <p>Stock: 15</p>
+    <a href="index1.php" class="login-link">Inicia sesión para comprar</a>
+  </div>
 
-  while ($row = $result->fetch_assoc()) {
-      echo "<div class='producto'>";
-      if (!empty($row['imagen'])) {
-          echo "<img src='imagenes/" . htmlspecialchars($row['imagen']) . "'><br>";
-      }
-      echo "<h3>" . htmlspecialchars($row['nombre']) . "</h3>";
-      echo "<p>" . htmlspecialchars($row['descripcion']) . "</p>";
-      echo "<strong>$" . number_format($row['precio'], 2) . "</strong><br>";
-      echo "<p>Farmacia: " . htmlspecialchars($row['farmacia']) . "</p>";
-      echo "<p>Stock: " . intval($row['stock']) . "</p>";
-      echo "<a href='index1.php' class='login-link'>Inicia sesión para comprar</a>";
-      echo "</div>";
-  }
-  ?>
+  <div class="producto">
+    <h3>Antibiótico Amoxicilina</h3>
+    <p>Tratamiento para infecciones bacterianas.</p>
+    <strong>$120.00</strong><br />
+    <p>Farmacia: Farmacia Médica</p>
+    <p>Stock: 10</p>
+    <a href="index1.php" class="login-link">Inicia sesión para comprar</a>
+  </div>
 </div>
+
 <footer>
-  <a href="https://facebook.com/tuempresa" target="_blank">Facebook</a> |
-  <a href="https://instagram.com/tuempresa" target="_blank">Instagram</a> |
-
-    <a href="contenido.php">Contenido</a> |
-    <a href="auditoria.php">Auditoría</a>
-
+  <a href="https://facebook.com/tuempresa" target="_blank" rel="noopener">Facebook</a> |
+  <a href="https://instagram.com/tuempresa" target="_blank" rel="noopener">Instagram</a> |
+  <a href="contenido.php">Contenido</a> |
+  <a href="auditoria.php">Auditoría</a>
 </footer>
-
 
 </body>
 </html>
